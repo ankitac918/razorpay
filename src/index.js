@@ -15,7 +15,7 @@ var auth = "Basic " + Buffer.from(username + ":" + password).toString("base64");
 
 app.post("/payment", function (req, res) {
   let { amount, currency, receipt } = req.body;
-  console.log(req.body);
+  // console.log(req.body);
   var options = {
     url: "https://api.razorpay.com/v1/orders",
     method: "POST",
@@ -34,10 +34,11 @@ app.post("/payment", function (req, res) {
     if (!error) {
       // Print out the response body
       console.log(body);
-      console.log(response.statusCode);
-      res.sendStatus(200);
+      // console.log(response.statusCode);
+      // res.sendStatus(200);
+      res.send(body)
     } else {
-      console.log(error);
+      // console.log(error);
     }
   });
 });

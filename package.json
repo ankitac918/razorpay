@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "start": "node src/index.js",
+    "start": "npm i node src/index.js",
     "dev": "nodemon src/index.js"
   },
   "dependencies": {

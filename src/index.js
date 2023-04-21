@@ -1,19 +1,21 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const port = 3000;
-app.use(express.json())
+app.use(express.json());
+app.use(cors());
 // const Razorpay = require("razorpay");
 const request = require("request");
 
 app.get("/", (req, res) => {
   res.send("Hello");
-}); 
+});
 
 var username = "rzp_test_G6n8I0oDzmfPmz";
 var password = "J1gsiayK5rcSKgvBoADLA2gH";
 var auth = "Basic " + Buffer.from(username + ":" + password).toString("base64");
 
-app.post("/payment", function (req, res) {
+app.post("/payment", cors(),                                                               function (req, res) {
   let { amount, currency, receipt } = req.body;
   // console.log(req.body);
   var options = {
@@ -36,7 +38,7 @@ app.post("/payment", function (req, res) {
       console.log(body);
       // console.log(response.statusCode);
       // res.sendStatus(200);
-      res.send(body)
+      res.send(body);
     } else {
       // console.log(error);
     }
